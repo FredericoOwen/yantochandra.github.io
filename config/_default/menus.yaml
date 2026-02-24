@@ -5,15 +5,34 @@
 
 main:
   - name: Home
-    url: '/index.html'
+    url: '/'
     weight: 10
-  - name: News
-    url: '#news'
-    weight: 20
-  - name: Team
-    url: '#group'
-    weight: 30
+    
   - name: Publications
-    url: '#publications'
+    url: '/publications/'
+    weight: 20
+    
+  - name: Grants and Awards
+    url: '/grants/'
+    weight: 30
+    
+  - name: Services
+    url: '/services/'
     weight: 40
+    
+  - name: Codes
+    url: '/codes/'
+    weight: 50
+    
+  - name: Creative
+    url: '/creative/'
+    weight: 60
+    
+  - name: Media and Talks
+    url: '/media/'
+    weight: 70
+    
+  - name: Blog
+    url: '/blog/'
+    weight: 80
   
