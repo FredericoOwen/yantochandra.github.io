@@ -9,30 +9,29 @@ main:
     weight: 10
     
   - name: Publications
-    url: '/publications/'
+    url: '#publications'
     weight: 20
     
   - name: Grants and Awards
-    url: '/grants/'
+    url: '#grants'
     weight: 30
     
   - name: Services
-    url: '/services/'
+    url: '#services'
     weight: 40
     
   - name: Codes
-    url: '/codes/'
+    url: '#codes'
     weight: 50
     
   - name: Creative
-    url: '/creative/'
+    url: '#creative'
     weight: 60
     
   - name: Media and Talks
-    url: '/media/'
+    url: '#media'
     weight: 70
     
   - name: Blog
-    url: '/blog/'
+    url: '#blog'
     weight: 80
-  
