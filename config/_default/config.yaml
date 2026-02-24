@@ -5,7 +5,7 @@ theme: "starter-hugo-academic"
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Yanto Chandra # Website name
-baseURL: 'https://fredericoowen.github.io/yantochandra.github.io/' # Website URL
+baseURL: 'https://fredericoowen.github.io/' # Website URL
 
 ############################
 ## LANGUAGE
