@@ -8,14 +8,14 @@ title: Grants and Awards
 
 ## Grants and Awards
 
-{{< awards_list sort="desc" >}}
-
+<!-- Sort controls -->
 <div class="awards-controls mt-4 mb-3">
   <small class="text-muted">Sort by date:</small>
   <button class="btn btn-sm btn-outline-secondary me-2" onclick="sortAwards('desc')">Newest First ↓</button>
   <button class="btn btn-sm btn-outline-secondary" onclick="sortAwards('asc')">Oldest First ↑</button>
 </div>
 
+<!-- Awards list -->
 <div id="awards-container">
   {{ range $index, $award := $.Site.Data.awards }}
   <div class="award-item mb-3" data-date="{{ $award.date }}">
@@ -91,4 +91,4 @@ document.addEventListener('DOMContentLoaded', () => {
     text-align: left;
   }
 }
-</style>
+</style
