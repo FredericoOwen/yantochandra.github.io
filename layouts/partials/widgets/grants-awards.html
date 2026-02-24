@@ -1,8 +1,10 @@
+{{ $page := . }}
+
 <section id="awards" class="home-section">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="section-title">Grants and Awards</h1>
+        <h1 class="section-title">{{ $page.Title }}</h1>
         
         <!-- Sort controls -->
         <div class="awards-controls mb-4 text-end">
@@ -57,17 +59,15 @@ function sortAwards(order) {
     return order === 'asc' ? dateA - dateB : dateB - dateA;
   });
   
-  // Re-append in sorted order
   awards.forEach(award => container.appendChild(award));
 }
 
-// Initialize with default sort (descending)
 document.addEventListener('DOMContentLoaded', () => {
   sortAwards('desc');
 });
 </script>
 
-<!-- Custom CSS for Awards -->
+<!-- Custom CSS -->
 <style>
 .award-item .card {
   transition: transform 0.2s, box-shadow 0.2s;
@@ -77,18 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-.award-item a {
-  color: inherit;
-}
-.award-item a:hover {
-  color: #0d6efd;
-}
-.awards-controls {
-  margin-bottom: 2rem;
-}
+.award-item a { color: inherit; }
+.award-item a:hover { color: #0d6efd; }
+.awards-controls { margin-bottom: 2rem; }
 @media (max-width: 768px) {
-  .awards-controls {
-    text-align: left !important;
-  }
+  .awards-controls { text-align: left !important; }
 }
 </style>
