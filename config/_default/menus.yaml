@@ -13,7 +13,7 @@ main:
     weight: 20
     
   - name: Grants and Awards
-    url: '#grants'
+    url: '/grants-awards/'
     weight: 30
     
   - name: Services
