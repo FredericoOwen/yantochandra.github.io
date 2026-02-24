@@ -4,7 +4,19 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="section-title">{{ $page.Title }}</h1>
+        
+        <!-- DEBUG: Show what Hugo sees -->
+        <div class="alert alert-warning mb-4">
+          <strong>Debug Info:</strong><br>
+          Page Title: "{{ $page.Title }}"<br>
+          Awards Count: {{ if $.Site.Data.awards }}{{ len $.Site.Data.awards }}{{ else }}0 (NOT LOADED){{ end }}<br>
+          Data Path: $.Site.Data.awards
+        </div>
+
+        <!-- Title (with fallback) -->
+        <h1 class="section-title mb-4">
+          {{ if $page.Title }}{{ $page.Title }}{{ else }}Grants and Awards{{ end }}
+        </h1>
         
         <!-- Sort controls -->
         <div class="awards-controls mb-4 text-end">
@@ -15,31 +27,38 @@
 
         <!-- Awards list -->
         <div id="awards-container">
-          {{ range $index, $award := $.Site.Data.awards }}
-          <div class="award-item mb-3" data-date="{{ $award.date }}">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <a href="{{ $award.link }}" target="_blank" rel="noopener" class="text-decoration-none">
-                    {{ $award.title }}
-                    <i class="fas fa-external-link-alt ms-1 small"></i>
-                  </a>
-                </h5>
-                <div class="d-flex flex-wrap gap-2 mb-2">
-                  <span class="badge bg-primary">{{ $award.date_display }}</span>
-                  {{ if $award.category }}
-                  <span class="badge bg-secondary">{{ $award.category }}</span>
-                  {{ end }}
-                  {{ if $award.amount }}
-                  <span class="badge bg-success">{{ $award.amount }}</span>
+          {{ if $.Site.Data.awards }}
+            {{ range $index, $award := $.Site.Data.awards }}
+            <div class="award-item mb-3" data-date="{{ $award.date }}">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="{{ $award.link | trim }}" target="_blank" rel="noopener" class="text-decoration-none">
+                      {{ $award.title }}
+                      <i class="fas fa-external-link-alt ms-1 small"></i>
+                    </a>
+                  </h5>
+                  <div class="d-flex flex-wrap gap-2 mb-2">
+                    <span class="badge bg-primary">{{ $award.date_display }}</span>
+                    {{ if $award.category }}
+                    <span class="badge bg-secondary">{{ $award.category }}</span>
+                    {{ end }}
+                    {{ if $award.amount }}
+                    <span class="badge bg-success">{{ $award.amount }}</span>
+                    {{ end }}
+                  </div>
+                  {{ if $award.description }}
+                  <p class="card-text small text-muted mb-0">{{ $award.description | markdownify }}</p>
                   {{ end }}
                 </div>
-                {{ if $award.description }}
-                <p class="card-text small text-muted mb-0">{{ $award.description | markdownify }}</p>
-                {{ end }}
               </div>
             </div>
-          </div>
+            {{ end }}
+          {{ else }}
+            <div class="alert alert-danger">
+              ⚠️ <strong>No awards data found!</strong><br>
+              Make sure <code>data/awards.yaml</code> exists at the repo root and contains valid YAML.
+            </div>
           {{ end }}
         </div>
       </div>
@@ -47,40 +66,27 @@
   </div>
 </section>
 
-<!-- Sorting Script -->
 <script>
 function sortAwards(order) {
   const container = document.getElementById('awards-container');
   const awards = Array.from(container.querySelectorAll('.award-item'));
-  
   awards.sort((a, b) => {
     const dateA = new Date(a.dataset.date);
     const dateB = new Date(b.dataset.date);
     return order === 'asc' ? dateA - dateB : dateB - dateA;
   });
-  
   awards.forEach(award => container.appendChild(award));
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   sortAwards('desc');
 });
 </script>
 
-<!-- Custom CSS -->
 <style>
-.award-item .card {
-  transition: transform 0.2s, box-shadow 0.2s;
-  border-left: 4px solid #0d6efd;
-}
-.award-item .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+.award-item .card { transition: transform 0.2s, box-shadow 0.2s; border-left: 4px solid #0d6efd; }
+.award-item .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 .award-item a { color: inherit; }
 .award-item a:hover { color: #0d6efd; }
 .awards-controls { margin-bottom: 2rem; }
-@media (max-width: 768px) {
-  .awards-controls { text-align: left !important; }
-}
+@media (max-width: 768px) { .awards-controls { text-align: left !important; } }
 </style>
