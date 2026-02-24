@@ -1,7 +1,7 @@
 ---
 widget: custom
 headless: true
-weight: 35
+weight: 30
 active: true
 title: Grants and Awards
 ---
