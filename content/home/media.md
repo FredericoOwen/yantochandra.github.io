@@ -1,3 +1,4 @@
+---
 widget: media
 headless: true
 weight: 70
