@@ -48,17 +48,17 @@ social:
     icon_pack: fas
     link: 'mailto:ychandra@cityu.edu.hk'
     
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/ychandra
-    
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/ychandra/
 
-  - icon: facebook
-    icon_pack: fab
-    link: https://www.facebook.com/ychandra
+  - icon: graduation-cap
+    icon_pack: fas
+    link: https://scholar.google.com/citations?user=m5ig9lgAAAAJ&hl=en
+
+  - icon: university
+    icon_pack: fas
+    link: https://scholars.cityu.edu.hk/en/persons/ychandra/
 
 highlight_name: true # Highlight the author in author lists? (true/false)
 ---
