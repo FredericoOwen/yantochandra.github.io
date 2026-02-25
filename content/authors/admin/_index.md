@@ -26,16 +26,17 @@ bio: Full Professor at the City University of Hong Kong's Department of Public a
 
 # Interests to show in About widget
 interests:
-  - Soft Matter
-  - Fluid at interface
-  - Computer simulations
+  - Public Sector Innovation
+  - Digital Government
+  - Social Entrepreneurship
+  - Computational Social Science
 
 # Education to show in About widget
 education:
   courses:
     - course: PhD, MCom
       institution: University of New South Wales (Australia)
-      year: 9999
+      year: 2008
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
@@ -45,22 +46,19 @@ education:
 social:
   - icon: envelope
     icon_pack: fas
-    link: mailto:simon.gravelle@cnrs.fr
-  - icon: github
+    link: 'mailto:ychandra@cityu.edu.hk'
+    
+  - icon: twitter
     icon_pack: fab
-    link: https://github.com/simongravelle
-    display:
-      header: true
-  - icon: mastodon
+    link: https://twitter.com/ychandra
+    
+  - icon: linkedin
     icon_pack: fab
-    link: https://mastodon.social/@simongravelle
-    label: Follow me on Mastodon
-  - icon: graduation-cap
-    icon_pack: fas
-    link: https://scholar.google.com/citations?user=9fD2JlYAAAAJ&hl
-  - icon: cv
-    icon_pack: ai
-    link: files/resume/resume-simon-gravelle.pdf
+    link: https://www.linkedin.com/in/ychandra/
+
+  - icon: facebook
+    icon_pack: fab
+    link: https://www.facebook.com/ychandra
 
 highlight_name: true # Highlight the author in author lists? (true/false)
 ---
