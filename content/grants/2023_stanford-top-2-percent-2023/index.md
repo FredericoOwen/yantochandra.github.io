@@ -10,7 +10,7 @@ featured: false
 links:
   - icon_pack: fas
     icon: scroll
-    name: Link
+    name: Award
     url: "https://scholars.cityu.edu.hk/en/prizes/stanfords-top-2-most-highly-cited-scientists-2023-116/"
 ---
 

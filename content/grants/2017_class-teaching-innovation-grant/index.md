@@ -10,7 +10,7 @@ featured: false
 links:
   - icon_pack: fas
     icon: scroll
-    name: Link
+    name: Award
     url: "https://scholars.cityu.edu.hk/en/prizes/cityu-class-teaching-innovation-award-tia-2017-grant-hk15000/"
 ---
 

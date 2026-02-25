@@ -10,7 +10,7 @@ featured: false
 links:
   - icon_pack: fas
     icon: scroll
-    name: Link
+    name: Award
     url: "https://scholars.cityu.edu.hk/en/prizes/hong-kong-ugc-teaching-amp-learning-grant-transforming-science-an/"
 ---
 

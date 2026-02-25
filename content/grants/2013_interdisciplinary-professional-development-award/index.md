@@ -10,7 +10,7 @@ featured: false
 links:
   - icon_pack: fas
     icon: scroll
-    name: Link
+    name: Award
     url: "https://scholars.cityu.edu.hk/en/prizes/interdisciplinary-professional-development-award-ipda-2013-hk2341/"
 ---
 
