@@ -1,0 +1,95 @@
+{{ $ := .root }}
+{{ $page := .page }}
+{{ $media := site.Data.media }}
+
+<div class="row">
+  <div class="col-12">
+    {{ if and $page.Params.widget $page.Title }}<h1 class="mb-4">{{ $page.Title | markdownify | emojify }}</h1>{{ end }}
+
+    {{ with $page.Content }}
+      <div class="mb-4">
+        {{ . }}
+      </div>
+    {{ end }}
+
+    {{ if not $media }}
+      <p class="text-muted mb-0">No media items found. Check that <code>data/media.yaml</code> exists and contains a YAML list.</p>
+    {{ else }}
+      <div class="media-controls mb-4 text-end">
+        <small class="text-muted me-2">Sort by date:</small>
+        <button class="btn btn-sm btn-outline-secondary me-2" type="button" onclick="sortMedia('desc')">Newest First ↓</button>
+        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="sortMedia('asc')">Oldest First ↑</button>
+      </div>
+
+      <div id="media-container">
+        {{ range $index, $item := $media }}
+          <div class="media-item mb-3" data-date="{{ $item.date }}">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title mb-2">
+                  {{ if $item.link }}
+                    <a href="{{ $item.link }}" target="_blank" rel="noopener" class="text-decoration-none">
+                      {{ $item.title }}
+                      <i class="fas fa-external-link-alt ms-1 small"></i>
+                    </a>
+                  {{ else }}
+                    {{ $item.title }}
+                  {{ end }}
+                </h5>
+
+                <div class="d-flex flex-wrap gap-2 mb-2">
+                  {{ with $item.date_display }}<span class="badge bg-primary">{{ . }}</span>{{ end }}
+                  {{ with $item.category }}<span class="badge bg-secondary">{{ . }}</span>{{ end }}
+                  {{ with $item.publication }}<span class="badge bg-info text-dark">{{ . }}</span>{{ end }}
+                </div>
+
+                {{ with $item.description }}
+                  <p class="card-text small text-muted mb-0">{{ . | markdownify }}</p>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>
+
+<script>
+function sortMedia(order) {
+  const container = document.getElementById('media-container');
+  if (!container) return;
+
+  const items = Array.from(container.querySelectorAll('.media-item'));
+
+  items.sort((a, b) => {
+    const dateA = new Date(a.dataset.date);
+    const dateB = new Date(b.dataset.date);
+    return order === 'asc' ? dateA - dateB : dateB - dateA;
+  });
+
+  items.forEach(item => container.appendChild(item));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  sortMedia('desc');
+});
+</script>
+
+<style>
+.media-item .card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 4px solid #0d6efd;
+}
+.media-item .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.media-item a { color: inherit; }
+.media-item a:hover { color: #0d6efd; }
+.media-controls { margin-bottom: 2rem; }
+@media (max-width: 768px) {
+  .media-controls { text-align: left !important; }
+}
+</style>
+
