@@ -47,6 +47,31 @@
       </div>
     {{ end }}
 
+  {{/* Custom layout for Services */}}
+  {{ else if eq $section "services" }}
+
+    <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>.
+
+    <div class="article-metadata text-muted small">
+      {{ if $item.Params.date_display }}
+        {{ $item.Params.date_display }}
+      {{ else }}
+        {{- $item.Date.Format "2 Jan 2006" -}}
+      {{ end }}
+    </div>
+
+    {{ with $item.Params.abstract }}
+      <div class="article-metadata">
+        {{ . | markdownify }}
+      </div>
+    {{ end }}
+
+    {{ if $has_attachments }}
+      <div class="btn-links">
+        {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+      </div>
+    {{ end }}
+
   {{/* Default Publications layout (unchanged) */}}
   {{ else }}
 

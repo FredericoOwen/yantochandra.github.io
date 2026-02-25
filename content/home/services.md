@@ -1,20 +1,34 @@
 ---
-widget: blank
+widget: pages
+
+# This file represents a page section.
 headless: true
+
+# Order that this section appears on the page.
 weight: 40
-active: true
+
 title: Services
+
+content:
+  # Filter on criteria
+  filters:
+    folders:
+      - services
+    tag: ''
+    category: ''
+    publication_type: ''
+    author: ''
+    exclude_featured: false
+    exclude_future: false
+    exclude_past: false
+  # Choose how many pages you would like to display (0 = all pages)
+  count: 0
+  # Choose how many pages you would like to offset by
+  offset: 0
+  # Page order: descending (desc) or ascending (asc) date.
+  order: desc
+design:
+  # Choose a view for the listings:
+  view: citation
+  columns: '2'
 ---
-
-## Academic Service
-
-### Editorial Roles
-
-- Area Editor, Data & Policy (Cambridge University Press)
-- Associate Editor, Journal of Business Venturing Insights
-- Editorial Board: Public Administration and Development
-
-### Conference Service
-
-- Program Chair, [Conference Name] 2024
-- Track Chair, [Conference Name] 2023
