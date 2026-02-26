@@ -1,0 +1,40 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toggles = document.querySelectorAll('.js-sort-toggle');
+  if (!toggles.length) return;
+
+  toggles.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var wrapper = button.closest('.js-sort-wrapper') || document;
+      var container = wrapper.querySelector('.js-sort-container');
+      if (!container) return;
+
+      var direction = button.getAttribute('data-direction') || 'desc';
+      var items = Array.prototype.slice.call(
+        container.querySelectorAll('[data-date]')
+      );
+
+      items.sort(function (a, b) {
+        var da = a.getAttribute('data-date') || '';
+        var db = b.getAttribute('data-date') || '';
+        if (direction === 'asc') {
+          return da.localeCompare(db);
+        }
+        return db.localeCompare(da);
+      });
+
+      items.forEach(function (item) {
+        container.appendChild(item);
+      });
+
+      var nextDirection = direction === 'asc' ? 'desc' : 'asc';
+      button.setAttribute('data-direction', nextDirection);
+      button.textContent =
+        nextDirection === 'asc'
+          ? 'Sort: Newest first'
+          : 'Sort: Oldest first';
+    });
+  });
+});
+</script>
+

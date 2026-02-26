@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+{{ partial "page_header.html" . }}
+
+<div class="universal-wrapper js-sort-wrapper">
+  {{ partial "sort_controls.html" . }}
+
+  <div class="js-sort-container">
+    {{ range .Pages.ByDate.Reverse }}
+      <article class="mb-3" data-date="{{ .Date.Format "2006-01-02" }}">
+        <p class="mb-1">
+          <strong>{{ .Params.course_code }}</strong>: {{ .Params.course_title }}
+          {{ if or .Params.start_year .Params.end_year }}
+            ({{ .Params.start_year }} - {{ with .Params.end_year }}{{ . }}{{ end }})
+          {{ end }}
+        </p>
+      </article>
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "sort_script.html" . }}
+
+{{ end }}
+

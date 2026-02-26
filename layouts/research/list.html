@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+{{ partial "page_header.html" . }}
+
+<div class="universal-wrapper js-sort-wrapper">
+  {{ partial "sort_controls.html" . }}
+
+  <div class="js-sort-container">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ $pubDate := .Params.publishDate | default .Date }}
+      {{ $year := $pubDate.Format "2006" }}
+      <article class="mb-3" data-date="{{ $pubDate.Format "2006-01-02" }}">
+        <p class="mb-1">
+          {{ with .Params.authors }}{{ delimit . ", " }}, {{ end }}{{ $year }}.
+          <span class="font-italic">{{ .Title }}</span>.
+          {{ with .Params.publication }}{{ . }}.{{ end }}
+          {{ with .Params.url }}
+            (<a href="{{ . }}" target="_blank" rel="noopener">here</a>)
+          {{ end }}
+        </p>
+      </article>
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "sort_script.html" . }}
+
+{{ end }}
+

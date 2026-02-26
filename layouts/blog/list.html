@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+{{ $page := . }}
+{{ partial "page_header.html" $page }}
+
+<div class="universal-wrapper js-sort-wrapper">
+  {{ partial "sort_controls.html" $page }}
+
+  <div class="js-sort-container">
+    {{ range $page.Pages.ByDate.Reverse }}
+      {{ $item := . }}
+      <article class="mb-4" data-date="{{ $item.Date.Format "2006-01-02" }}">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            {{ $title := $item.Title }}
+            <h3 class="h5 mb-1">
+              {{ with $item.Params.url }}
+                <a href="{{ . }}" target="_blank" rel="noopener">{{ $title }}</a>
+              {{ else }}
+                <a href="{{ $item.RelPermalink }}">{{ $title }}</a>
+              {{ end }}
+            </h3>
+            <div class="text-muted small mb-2">
+              {{ $item.Date.Format "2 Jan 2006" }}
+            </div>
+            {{ with $item.Params.description }}
+              <p class="mb-0">{{ . }}</p>
+            {{ else }}
+              {{ with $item.Summary }}
+                <p class="mb-0">{{ . }}</p>
+              {{ end }}
+            {{ end }}
+          </div>
+          <div class="col-md-4 text-md-right mt-3 mt-md-0">
+            {{ with $item.Params.image }}
+              <img src="{{ . | relURL }}" alt="{{ $title }}" class="img-fluid">
+            {{ end }}
+          </div>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "sort_script.html" $page }}
+
+{{ end }}
+
