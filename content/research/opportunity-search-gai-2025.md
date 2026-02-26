@@ -7,6 +7,6 @@ publication_types: ["3"]
 abstract: ""
 publication: "Journal of Management Studies"
 featured: false
-url: "https://scholars.cityu.edu.hk/en/persons/ychandra/"
+external_url: "https://scholars.cityu.edu.hk/en/persons/ychandra/"
 ---
 

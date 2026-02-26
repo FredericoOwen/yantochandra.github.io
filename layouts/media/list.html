@@ -12,7 +12,7 @@
       <article class="mb-4" data-date="{{ $item.Date.Format "2006-01-02" }}">
         {{ $title := $item.Title }}
         <h3 class="h5 mb-1">
-          {{ with $item.Params.url }}
+          {{ with $item.Params.external_url }}
             <a href="{{ . }}" target="_blank" rel="noopener">{{ $title }}</a>
           {{ else }}
             {{ $title }}

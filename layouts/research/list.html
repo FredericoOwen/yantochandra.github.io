@@ -14,7 +14,7 @@
           {{ with .Params.authors }}{{ delimit . ", " }}, {{ end }}{{ $year }}.
           <span class="font-italic">{{ .Title }}</span>.
           {{ with .Params.publication }}{{ . }}.{{ end }}
-          {{ with .Params.url }}
+          {{ with .Params.external_url }}
             (<a href="{{ . }}" target="_blank" rel="noopener">here</a>)
           {{ end }}
         </p>
