@@ -14,7 +14,7 @@
           <div class="col-md-8">
             {{ $title := $item.Title }}
             <h3 class="h5 mb-1">
-              {{ with $item.Params.url }}
+              {{ with $item.Params.external_url }}
                 <a href="{{ . }}" target="_blank" rel="noopener">{{ $title }}</a>
               {{ else }}
                 <a href="{{ $item.RelPermalink }}">{{ $title }}</a>
