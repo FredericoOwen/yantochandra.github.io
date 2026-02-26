@@ -7,6 +7,6 @@ publication_types: ["3"]
 abstract: ""
 publication: "Journal of Management Studies"
 featured: false
-url: "https://example.com/journal-of-management-studies/opportunity-search-gai-2025"
+url: "https://scholars.cityu.edu.hk/en/persons/ychandra/"
 ---
 
